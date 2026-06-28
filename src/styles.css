@@ -1,0 +1,301 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "Aurora Noir"
+ * Dark, cinematic portfolio aesthetic with glassmorphism, aurora gradients
+ * and gradient glow accents. All colors use oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-aurora-1: var(--aurora-1);
+  --color-aurora-2: var(--aurora-2);
+  --color-aurora-3: var(--aurora-3);
+  --color-glass: var(--glass);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-display: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-aurora: aurora 18s ease-in-out infinite;
+  --animate-float-slow: floatSlow 9s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes aurora {
+    0%,
+    100% {
+      transform: translate3d(-6%, -4%, 0) scale(1.05) rotate(0deg);
+      opacity: 0.85;
+    }
+    50% {
+      transform: translate3d(8%, 6%, 0) scale(1.2) rotate(8deg);
+      opacity: 1;
+    }
+  }
+  @keyframes floatSlow {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-18px);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Deep midnight base */
+  --background: oklch(0.16 0.025 270);
+  --foreground: oklch(0.96 0.01 250);
+
+  --card: oklch(0.2 0.028 268);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.18 0.026 268);
+  --popover-foreground: oklch(0.96 0.01 250);
+
+  /* Cyan/teal signature */
+  --primary: oklch(0.82 0.14 195);
+  --primary-foreground: oklch(0.16 0.03 250);
+
+  --secondary: oklch(0.26 0.03 268);
+  --secondary-foreground: oklch(0.96 0.01 250);
+
+  --muted: oklch(0.24 0.025 268);
+  --muted-foreground: oklch(0.68 0.02 260);
+
+  /* Violet accent */
+  --accent: oklch(0.66 0.2 295);
+  --accent-foreground: oklch(0.98 0.01 250);
+
+  --destructive: oklch(0.62 0.22 18);
+  --destructive-foreground: oklch(0.98 0.01 250);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.82 0.14 195);
+
+  /* Aurora palette */
+  --aurora-1: oklch(0.72 0.17 200);
+  --aurora-2: oklch(0.62 0.21 295);
+  --aurora-3: oklch(0.68 0.19 340);
+  --glass: oklch(1 0 0 / 5%);
+
+  --chart-1: oklch(0.72 0.17 200);
+  --chart-2: oklch(0.62 0.21 295);
+  --chart-3: oklch(0.68 0.19 340);
+  --chart-4: oklch(0.82 0.14 160);
+  --chart-5: oklch(0.78 0.16 70);
+
+  --sidebar: oklch(0.18 0.026 268);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.82 0.14 195);
+  --sidebar-primary-foreground: oklch(0.16 0.03 250);
+  --sidebar-accent: oklch(0.26 0.03 268);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-ring: oklch(0.82 0.14 195);
+}
+
+/* This portfolio is dark-only; alias .dark to the same tokens. */
+.dark {
+  --background: oklch(0.16 0.025 270);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.2 0.028 268);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.18 0.026 268);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.82 0.14 195);
+  --primary-foreground: oklch(0.16 0.03 250);
+  --secondary: oklch(0.26 0.03 268);
+  --secondary-foreground: oklch(0.96 0.01 250);
+  --muted: oklch(0.24 0.025 268);
+  --muted-foreground: oklch(0.68 0.02 260);
+  --accent: oklch(0.66 0.2 295);
+  --accent-foreground: oklch(0.98 0.01 250);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.82 0.14 195);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: oklch(0.82 0.14 195 / 0.3);
+    color: var(--color-foreground);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.16 0.025 270);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      var(--aurora-1),
+      var(--aurora-2)
+    );
+    border-radius: 999px;
+    border: 2px solid oklch(0.16 0.025 270);
+  }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Utilities                                                                */
+/* ----------------------------------------------------------------------- */
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid oklch(1 0 0 / 10%);
+}
+
+@utility glass-strong {
+  background: oklch(0.22 0.03 268 / 0.55);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid oklch(1 0 0 / 12%);
+}
+
+@utility text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--aurora-1),
+    var(--aurora-2) 45%,
+    var(--aurora-3)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-shimmer {
+  background: linear-gradient(
+    100deg,
+    oklch(0.7 0.02 260) 20%,
+    oklch(0.98 0.01 250) 50%,
+    oklch(0.7 0.02 260) 80%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+@utility glow-primary {
+  box-shadow:
+    0 0 0 1px oklch(0.82 0.14 195 / 0.2),
+    0 10px 40px -10px oklch(0.72 0.17 200 / 0.5);
+}
+
+@utility glow-accent {
+  box-shadow:
+    0 0 0 1px oklch(0.66 0.2 295 / 0.25),
+    0 10px 50px -10px oklch(0.62 0.21 295 / 0.55);
+}
+
+@utility border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(120deg, var(--aurora-1), var(--aurora-2), var(--aurora-3))
+      border-box;
+}
+
+@utility section-pad {
+  padding-top: clamp(5rem, 12vh, 9rem);
+  padding-bottom: clamp(5rem, 12vh, 9rem);
+}
